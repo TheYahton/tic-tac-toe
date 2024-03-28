@@ -1,36 +1,12 @@
 import arcade
 
 SIZE = 400
+TILE_SIZE = SIZE // 3
 GRID_COLOR = 138, 138, 138
 GRID_LINE_WIDTH = 5
 NOUGHT_COLOR = 253, 71, 85
 CROSS_COLOR = 1, 208, 251
 DELTA = 20
-
-
-def clicked_tile(x, y):
-    if y < SIZE / 3:
-        if x < SIZE / 3:
-            index = 6
-        elif x < SIZE / 3 * 2:
-            index = 7
-        else:
-            index = 8
-    elif y < SIZE / 3 * 2:
-        if x < SIZE / 3:
-            index = 3
-        elif x < SIZE / 3 * 2:
-            index = 4
-        else:
-            index = 5
-    else:
-        if x < SIZE / 3:
-            index = 0
-        elif x < SIZE / 3 * 2:
-            index = 1
-        else:
-            index = 2
-    return index
 
 
 class Tictactoe(arcade.Window):
@@ -86,7 +62,7 @@ class Tictactoe(arcade.Window):
                     pass
 
     def on_mouse_press(self, x: int, y: int, button: int, modifiers: int) -> None:
-        aim = clicked_tile(x, y)
+        aim = x // TILE_SIZE + (2-y // TILE_SIZE) * 3
         if self.grid_field[aim] != "blank":
             return
         self.grid_field[aim] = self.move
