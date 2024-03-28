@@ -94,9 +94,6 @@ class Tictactoe(arcade.Window):
                 case _:
                     pass
 
-    def setup(self):
-        pass
-
     def on_mouse_press(self, x: int, y: int, button: int, modifiers: int) -> None:
         aim = clicked_tile(x, y)
         if self.grid_field[aim] != "blank":
@@ -112,7 +109,6 @@ class Tictactoe(arcade.Window):
 
 def main():
     game = Tictactoe()
-    game.setup()
     game.run()
 
 
