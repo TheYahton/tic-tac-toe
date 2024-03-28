@@ -6,17 +6,6 @@ GRID_LINE_WIDTH = 5
 NOUGHT_COLOR = 253, 71, 85
 CROSS_COLOR = 1, 208, 251
 DELTA = 20
-TABLE = {
-    0: (SIZE / 2 - SIZE / 3, SIZE / 2 + SIZE / 3),
-    1: (SIZE / 2, SIZE / 2 + SIZE / 3),
-    2: (SIZE / 2 + SIZE / 3, SIZE / 2 + SIZE / 3),
-    3: (SIZE / 2 - SIZE / 3, SIZE / 2),
-    4: (SIZE / 2, SIZE / 2),
-    5: (SIZE / 2 + SIZE / 3, SIZE / 2),
-    6: (SIZE / 2 - SIZE / 3, SIZE / 2 - SIZE / 3),
-    7: (SIZE / 2, SIZE / 2 - SIZE / 3),
-    8: (SIZE / 2 + SIZE / 3, SIZE / 2 - SIZE / 3),
-}
 
 
 def clicked_tile(x, y):
@@ -86,11 +75,13 @@ class Tictactoe(arcade.Window):
 
     def draw_noughts_and_crosses(self):
         for i, value in enumerate(self.grid_field):
+            x = (i % 3 + 1/2) * SIZE/3
+            y = (2 - i // 3 + 1/2) * SIZE/3
             match value:
                 case "nought":
-                    self.draw_nought(*TABLE[i])
+                    self.draw_nought(x, y)
                 case "cross":
-                    self.draw_cross(*TABLE[i])
+                    self.draw_cross(x, y)
                 case _:
                     pass
 
