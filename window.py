@@ -20,7 +20,7 @@ class Tictactoe(arcade.Window):
 
     def create_figure(self, x: float, y: float, which: str):
         tile_index = self.grid_field.get_tile_index(x, y)
-        x, y = self.grid_field.get_tile_center(index)
+        x, y = self.grid_field.get_tile_center(tile_index)
         figure = arcade.Sprite(f"assets/{which}.png")
         figure.set_position(x, y)
         self.figure_list.append(figure)
