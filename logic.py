@@ -2,14 +2,16 @@ from settings import SIZE, TILE_SIZE
 
 
 class Grid:
-    def __init__(self):
-        self.grid_field = ["blank"] * 9  # can be "blank", "cross" or "nought"
+    def __init__(self, window):
+        self.field = ["blank"] * 9  # can be "blank", "cross" or "nought"
         self.move = "cross"  # cross moves first
+        self.window = window
 
     def do_move(self, index):
-        if self.grid_field[index] != "blank":
+        if self.field[index] != "blank":
             return
-        self.grid_field[index] = self.move
+        self.field[index] = self.move
+        self.window.create_figure(index, self.move)
         self.move = "cross" if self.move == "nought" else "nought"
 
     def get_tile_center(self, grid_index: int) -> list:
