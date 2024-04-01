@@ -19,7 +19,7 @@ class TicTacToe(arcade.Window):
     def end(self, win, draw) -> None:
         arcade.draw_rectangle_filled(SIZE / 2, SIZE / 2, SIZE, SIZE, (0, 0, 0, 128))
         arcade.draw_text(
-            "It's a draw" if (draw and not win) else f"{self.grid.current_player} wins!",
+            ("It's a draw" if (draw and not win) else f"{self.grid.player} wins!"),
             0,
             SIZE / 2,
             align="center",

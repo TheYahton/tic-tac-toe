@@ -4,7 +4,7 @@ from settings import SIZE, TILE_SIZE, WIN_CONDITIONS
 class Grid:
     def __init__(self, window) -> None:
         self.field = ["blank"] * 9  # can be "blank", "cross" or "nought"
-        self.current_player = "cross"  # cross moves first
+        self.player = "cross"  # cross moves first
         self.window = window
         self.stop = False
 
@@ -13,13 +13,13 @@ class Grid:
             return
         if self.field[index] != "blank":
             return
-        self.field[index] = self.current_player
-        self.window.draw_figure(index, self.current_player)
+        self.field[index] = self.player
+        self.window.draw_figure(index, self.player)
         self.check_win()
         self.switch_player()
-    
+
     def switch_player(self) -> None:
-        self.current_player = "cross" if self.current_player == "nought" else "nought"
+        self.player = "cross" if self.player == "nought" else "nought"
 
     def get_tile_center(self, grid_index: int) -> list:
         x = int((grid_index % 3 + 1 / 2) * SIZE / 3)
