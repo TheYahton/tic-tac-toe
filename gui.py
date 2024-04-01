@@ -16,10 +16,10 @@ class TicTacToe(arcade.Window):
         self.clear()
         self.grid_sprite.draw()
 
-    def stop(self, winner, draw=False):
+    def end(self, win, draw) -> None:
         arcade.draw_rectangle_filled(SIZE / 2, SIZE / 2, SIZE, SIZE, (0, 0, 0, 128))
         arcade.draw_text(
-            "It's a draw" if (draw and winner is None) else f"{winner} wins!",
+            "It's a draw" if (draw and not win) else f"{self.grid.current_player} wins!",
             0,
             SIZE / 2,
             align="center",
@@ -37,7 +37,7 @@ class TicTacToe(arcade.Window):
             font_name="Kenney Pixel Square",
         )
 
-    def create_figure(self, tile_index: int, which: str):
+    def draw_figure(self, tile_index: int, which: str) -> None:
         x, y = self.grid.get_tile_center(tile_index)
         figure = arcade.Sprite(f"assets/{which}.png")
         figure.set_position(x, y)
@@ -47,6 +47,6 @@ class TicTacToe(arcade.Window):
         aim = x // TILE_SIZE + (2 - y // TILE_SIZE) * 3
         self.grid.do_move(aim)
 
-    def on_key_press(self, symbol, modifiers):
+    def on_key_press(self, symbol, modifiers) -> None:
         if chr(symbol) == "r" and self.grid.stop:
             self.setup()
