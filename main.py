@@ -2,7 +2,7 @@ from gui import TicTacToe
 
 
 def main():
-    game = Tictactoe()
+    game = TicTacToe()
     game.setup()
     game.run()
 
