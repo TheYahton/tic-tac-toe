@@ -1,4 +1,4 @@
-from window import Tictactoe
+from gui import Tictactoe
 
 
 def main():

@@ -3,12 +3,11 @@ from settings import SIZE, BG_COLOR, TILE_SIZE
 from logic import Grid
 
 
-class Tictactoe(arcade.Window):
+class TicTacToe(arcade.Window):
     def __init__(self) -> None:
         super().__init__(SIZE, SIZE, "Tic Tac Toe")
         arcade.set_background_color(BG_COLOR)
         self.grid = None
-        self.move = None
         self.grid_sprite = None
         self.figure_list = None
 
